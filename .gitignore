@@ -1,0 +1,10 @@
+work/
+transcript
+vsim.wlf
+modelsim.ini
+xcelium.d/
+xrun.history
+xrun.key
+cov_work/
+logs/*.ucdb
+logs/*.wlf

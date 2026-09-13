@@ -1,0 +1,20 @@
++incdir+tb
+-f scripts/rtl.f
+tb/axi_delay.sv
+tb/axi_protocol_checker.sv
+tb/tb_pkg.sv
+tb/cpu_tb_pkg.sv
+tb/tb_top.sv
+tb/tests/unit_test.sv
+tb/tests/register_file_test.sv
+tb/tests/decode_test.sv
+tb/tests/control_test.sv
+tb/tests/cpu_test.sv
+tb/tests/sram_test.sv
+tb/tests/axi_slave_test.sv
+tb/tests/axi_master_test.sv
+tb/tests/axi_reset_test.sv
+tb/tests/soc_integration_test.sv
+tb/tests/cpu_isa_test.sv
+tb/tests/delayed_core_test.sv
+tb/tests/fault_test.sv

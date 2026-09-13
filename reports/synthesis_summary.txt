@@ -1,0 +1,6 @@
+Status: not run.
+
+No area, timing, resource utilization, or FPGA implementation results are available.
+The RTL includes SystemVerilog packages and an interface. A synthesis flow needs
+a compatible frontend and a selected target before a useful report can be made.
+scripts/rtl.f is the existing ordered RTL source list.

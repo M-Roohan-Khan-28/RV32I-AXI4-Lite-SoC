@@ -1,0 +1,11 @@
+rtl/cpu/rv32_pkg.sv
+rtl/cpu/alu.sv
+rtl/cpu/register_file.sv
+rtl/cpu/instruction_decoder.sv
+rtl/cpu/immediate_generator.sv
+rtl/cpu/control_unit.sv
+rtl/cpu/branch_unit.sv
+rtl/cpu/pc.sv
+rtl/cpu/load_store_unit.sv
+rtl/cpu/riscv_core.sv
+rtl/memory/instruction_memory.sv

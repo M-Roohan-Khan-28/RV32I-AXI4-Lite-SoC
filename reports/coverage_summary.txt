@@ -1,0 +1,11 @@
+Source: existing ModelSim Starter results recorded on 2026-09-13.
+The publishing copy was rerun during packaging: 21/21 runs passed on 2026-09-13.
+
+Portable regression: 21/21 runs reported PASS.
+Instruction bins: 31/31. Branch outcome bins: 12/12.
+AXI write strobes: 16/16. AW/W arrival orders: 3/3.
+Three OOP seeds: 4758 checked transactions in total.
+
+Evidence: ../logs/coverage_summary.log and ../logs/regression_summary.log.
+Details and limitations: ../docs/RESULTS.md.
+Portable counters are not simulator code coverage or licensed covergroup results.
