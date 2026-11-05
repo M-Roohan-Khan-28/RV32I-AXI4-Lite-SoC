@@ -1,10 +1,8 @@
-# RISC-V SoC with AXI4-Lite SRAM
+# RV32I-Subset SoC with AXI4-Lite SRAM
 
 **SystemVerilog · 31-instruction RV32I subset · RTL and verification**
 
-This project follows an instruction from the CPU datapath to a memory transaction
-and back. A useful first run is the integration test: it adds 10 and 20, stores
-30 through AXI4-Lite, and reads it back into a register.
+A non-pipelined 32-bit processor implementing a 31-instruction RV32I subset, integrated with an AXI4-Lite data path and SRAM. The repository includes unit tests, instruction-reference checks, and SoC integration tests. The introductory integration program adds 10 and 20, stores 30 through AXI4-Lite, and reads it back into a CPU register.
 
 [Architecture](docs/ARCHITECTURE.md) · [Verification plan](docs/VERIFICATION_PLAN.md) · [Recorded results](docs/RESULTS.md) · [Waveforms](waves/README.md)
 
