@@ -1,5 +1,35 @@
 # Measured verification results
 
+## Additional transaction-varying latency regression — 6 November 2026
+
+Source revision `14fb8e6a854308aa45c16ab19e44ee3040edb2ea` was compiled
+and run in an isolated test clone with ModelSim Intel FPGA Starter Edition
+`vsim 2020.1 Simulator 2020.02 Feb 28 2020`:
+
+```powershell
+$env:MODELSIM_BIN='C:\intelFPGA\20.1\modelsim_ase\win32aloem'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/run_regression.ps1
+```
+
+The extended regression passed **24/24 runs**, wrapper exit **0**, compile
+0 errors/0 warnings. The three added tests use deterministic delay seeds
+1, 17 and 2026. Each executes the existing full instruction program against
+the independent architectural model, checks the register file after every
+retirement and compares initialized SRAM words at completion. All three
+retired 234 instructions, observed four writes and five reads, and verified
+that accepted AW and AR transactions had different stall lengths:
+
+| Seed | CPU wait cycles | AW stall range | AR stall range |
+| ---: | ---: | ---: | ---: |
+| 1 | 167 | 6–10 | 3–11 |
+| 17 | 150 | 2–11 | 2–9 |
+| 2026 | 152 | 1–11 | 2–7 |
+
+Fresh summary, compile and 24 simulation logs are retained under
+`reports/varying-latency-2026-11-06/`, separate from the historical `logs/`.
+The original 21 runs and their old evidence remain identified below. These
+new runs do not establish full ISA compliance or licensed coverage.
+
 Environment: Windows, ModelSim Intel FPGA Starter Edition **2020.1**, simulator build dated 2020-02-28. Verification run date: **2026-09-13**. Commands and timestamps are retained in the logs. No external dependencies or RISC-V compiler were installed.
 
 ## Portable regression

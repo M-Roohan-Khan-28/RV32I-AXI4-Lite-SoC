@@ -10,6 +10,7 @@
 | CPU instruction behavior | cpu_isa_test | Correct retirement PC, destination, value and write enable | Independent architectural class model | All 31 requested instruction IDs |
 | Branch outcomes | cpu_isa_test | Both taken/untaken; negative displacement loops | Model next-PC checking | 6 x 2 = 12 outcomes |
 | CPU memory wait | delayed_core_test | Stable PC/request; no early writeback/retirement | Full program through independently delayed channels | Reads/writes; 100+ wait cycles |
+| Transaction-varying memory latency | varying_latency_core_test | Stable PC/request, no early retirement, correct architectural registers after each retirement and final SRAM | Per-channel deterministic delay varies by accepted transaction; seeds 1, 17, 2026 | Four writes, five reads, distinct AW/AR stall lengths per seed |
 | Fault suppression | fault_test | Halt with no invalid register write; errors propagated | Ten directed illegal/alignment/bounds cases | All defined error classes |
 | SRAM | sram_test | Synchronous reads; byte-lane write enables | Write/read expected constants | First/middle/last, all 16 strobes, reset retention |
 | Slave independence | axi_slave_test | AW/W can arrive either way; stable B/R | Directed bus tasks and protocol checker | AW first, W first, together |

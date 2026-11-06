@@ -10,6 +10,12 @@ The publishing copy passed **21/21 portable regression runs** with ModelSim Inte
 FPGA Starter Edition 2020.1 on September 13, 2026. Results are retained with their
 logs. Synthesis and licensed coverage execution remain outstanding.
 
+An additional 6 November 2026 regression at source revision `14fb8e6` passed
+**24/24 runs**, including three transaction-varying AXI4-Lite delay seeds with
+the independent architectural reference checked after each retirement. New
+logs are separate under `reports/varying-latency-2026-11-06/`; see
+[results](docs/RESULTS.md) for the exact source and observed stall ranges.
+
 A synthesizable educational 32-bit, non-pipelined processor with direct instruction fetch and AXI4-Lite data access. One master connects directly to one SRAM slave. There are no peripherals, pipeline stages, caches or interconnect.
 
 ## Architecture
