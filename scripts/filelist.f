@@ -1,6 +1,7 @@
 +incdir+tb
 -f scripts/rtl.f
 tb/axi_delay.sv
+tb/axi_varying_delay.sv
 tb/axi_protocol_checker.sv
 tb/tb_pkg.sv
 tb/cpu_tb_pkg.sv
@@ -17,4 +18,5 @@ tb/tests/axi_reset_test.sv
 tb/tests/soc_integration_test.sv
 tb/tests/cpu_isa_test.sv
 tb/tests/delayed_core_test.sv
+tb/tests/varying_latency_core_test.sv
 tb/tests/fault_test.sv
