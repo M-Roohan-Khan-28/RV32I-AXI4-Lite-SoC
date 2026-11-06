@@ -54,6 +54,9 @@ module varying_latency_core_test;
           assert(ram.mem[k]===model.memory[k]) else $fatal(1,"varying SRAM word %0d",k);
         assert(cm.writes==4 && cm.reads==5 && waits>50)
           else $fatal(1,"varying transaction counts seed=%0d",SEED);
+        assert(model.instruction_hits==31'h7fffffff && model.branch_hits==12'hfff)
+          else $fatal(1,"varying ISA/branch bins missing seed=%0d instructions=%h branches=%h",
+                      SEED,model.instruction_hits,model.branch_hits);
         assert(aw_max>aw_min && ar_max>ar_min)
           else $fatal(1,"memory latency did not vary seed=%0d AW=%0d..%0d AR=%0d..%0d",
                       SEED,aw_min,aw_max,ar_min,ar_max);
