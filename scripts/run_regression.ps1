@@ -30,6 +30,11 @@ foreach($seed in @(17,2026)) {
   "PASS oop_seed_$seed" | Add-Content -Encoding utf8 $summary
   $count++
 }
+foreach($seed in @(1,17,2026)) {
+  & $runner -Top varying_latency_core_test -SkipCompile -LogName "varying_latency_$seed" -SimArgs "-gSEED=$seed"
+  "PASS varying_latency_$seed" | Add-Content -Encoding utf8 $summary
+  $count++
+}
 $result="PASS REGRESSION $count/$count runs; finished $(Get-Date -Format o)"
 $result | Add-Content -Encoding utf8 $summary
 Write-Output $result
