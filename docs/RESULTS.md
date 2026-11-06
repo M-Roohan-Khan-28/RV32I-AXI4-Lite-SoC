@@ -27,6 +27,12 @@ that accepted AW and AR transactions had different stall lengths:
 
 Fresh summary, compile and 24 simulation logs are retained under
 `reports/varying-latency-2026-11-06/`, separate from the historical `logs/`.
+In an isolated disposable commit
+`f3a3ce58b9140ca8c11a9610621d3fa2bf038b02`, the verification-only
+delay function was forced to one cycle. The new checker reported
+`Fatal: memory latency did not vary seed=1 AW=1..1 AR=1..1` and one simulator
+error; `scripts/run_stage.ps1` exited **1** after inspecting that log.
+The published source branch contains no such fault.
 The original 21 runs and their old evidence remain identified below. These
 new runs do not establish full ISA compliance or licensed coverage.
 
