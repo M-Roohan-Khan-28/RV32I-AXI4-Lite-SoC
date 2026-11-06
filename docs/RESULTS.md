@@ -2,6 +2,8 @@
 
 ## Additional transaction-varying latency regression — 6 November 2026
 
+The published [PR #2](https://github.com/M-Roohan-Khan-28/RV32I-AXI4-Lite-SoC/pull/2) merged normally at `9d44abcd5f9647ee59b85306baf828d195cb704c`. A fresh GitHub clone of that `main` commit ran `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/run_regression.ps1` with `MODELSIM_BIN=C:\intelFPGA\20.1\modelsim_ase\win32aloem`. The wrapper exited **0** and reported **24/24 PASS**. The three varying-latency seeds again produced 234 retirements each, with wait counts 167, 150 and 152. [Clean-main console and selected raw logs](../reports/clean-main-2026-11-06/) are separate from the historical `logs/` and earlier branch evidence. This evidence-only commit follows the tested merged source; it changes no RTL, testbench, script or earlier log.
+
 Source revision `14fb8e6a854308aa45c16ab19e44ee3040edb2ea` was compiled
 and run in an isolated test clone with ModelSim Intel FPGA Starter Edition
 `vsim 2020.1 Simulator 2020.02 Feb 28 2020`:
