@@ -98,3 +98,12 @@ See `logs/full_sv_capability.log`. This is a tool/license limitation, not a pass
 `logs/integration.vcd` is an actual generated waveform; the readable integration trace contains the full fetch/store/load/writeback sequence. All requested RTL, verification files, HEX programs, simulation scripts and design/verification documents are present. There are no placeholder RTL modules.
 
 No synthesis, area report, timing analysis, physical SRAM macro integration, FPGA programming, formal proof or official RISC-V compliance suite was run. The implemented ISA is the requested 31-instruction subset; exclusions are listed in README. Icarus and Verilator were unavailable. The licensed runtime verification items above remain the only simulator-specific verification gap; they must not be represented as completed coverage closure.
+# Required response-order qualification — 8 November 2026
+
+A [clean detached branch clone](../reports/technical-release-2026-11-08/SUMMARY.md)
+at `6af4cd8e5b49d592610281d6bd953114128b6762` passed 24/24 functional
+runs and, as a required separate substep, one legal response-order checker
+case plus eight individually expected negative detections. The project wrapper
+exited 0. Raw logs and JSON retain actual simulator and source revisions.
+The qualification detections are not counted as additional SoC functional
+runs or complete protocol coverage.

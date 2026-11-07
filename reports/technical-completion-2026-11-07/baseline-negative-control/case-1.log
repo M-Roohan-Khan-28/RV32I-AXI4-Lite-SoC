@@ -1,0 +1,21 @@
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -c -onfinish exit checker_response_order_test "+CASE=1" -do "onerror {quit -code 1}; onbreak {quit -code 1}; run -all; quit -code 0" 
+# Start time: 20:32:36 on Nov 07,2026
+# Loading sv_std.std
+# Loading work.checker_response_order_test
+# Loading work.axi_lite_if
+# Loading work.axi_protocol_checker
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  onbreak {quit -code 1}
+#  Warning: onbreak command for use within macro
+#  run -all
+# ** Fatal: CHECKER_ORDER_UNDETECTED case=1
+#    Time: 80 ns  Scope: checker_response_order_test File: C:/R_MIGRATION_BACKUP/Roohan_GitHub_Launch_Kit/Roohan_GitHub_Launch_Kit/build/tc/soc/tb/checker_response_order_test.sv Line: 109
+# ** Note: $finish    : C:/R_MIGRATION_BACKUP/Roohan_GitHub_Launch_Kit/Roohan_GitHub_Launch_Kit/build/tc/soc/tb/checker_response_order_test.sv(109)
+#    Time: 80 ns  Iteration: 1  Instance: /checker_response_order_test
+# End time: 20:32:38 on Nov 07,2026, Elapsed time: 0:00:02
+# Errors: 1, Warnings: 0
