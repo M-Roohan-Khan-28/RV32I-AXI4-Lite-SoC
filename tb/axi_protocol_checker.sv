@@ -22,15 +22,19 @@ module axi_protocol_checker #(parameter int MAX_WAIT=256)(axi_lite_if.MONITOR ax
       b_stall=axi.bvalid && !axi.bready; b_payload=axi.bresp;
       ar_stall=axi.arvalid && !axi.arready; ar_payload={axi.araddr,axi.arprot};
       r_stall=axi.rvalid && !axi.rready; r_payload={axi.rdata,axi.rresp};
+      // Eligibility uses state from earlier edges and is independent of READY.
+      // Counting this edge's AW/W/AR first would permit same-edge responses.
+      if(axi.bvalid) assert(aw_out>0 && w_out>0)
+        else $fatal(1,"AXI_CHECKER_B_DEPENDENCY: BVALID before prior AW and W acceptance");
+      if(axi.rvalid) assert(ar_out>0)
+        else $fatal(1,"AXI_CHECKER_R_DEPENDENCY: RVALID before prior AR acceptance");
       if(axi.awvalid && axi.awready) aw_out++;
       if(axi.wvalid && axi.wready) w_out++;
       if(axi.arvalid && axi.arready) ar_out++;
       if(axi.bvalid && axi.bready) begin
-        assert(aw_out>0 && w_out>0) else $fatal(1,"unsolicited B");
         aw_out--;w_out--;writes++;
       end
       if(axi.rvalid && axi.rready) begin
-        assert(ar_out>0) else $fatal(1,"unsolicited R");
         ar_out--;reads++;
       end
       write_age=(aw_out>0 && w_out>0) ? write_age+1 : 0;
