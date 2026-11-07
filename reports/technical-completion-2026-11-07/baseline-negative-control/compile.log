@@ -1,0 +1,11 @@
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+Start time: 20:32:26 on Nov 07,2026
+vlog -sv C:\R_MIGRATION_BACKUP\Roohan_GitHub_Launch_Kit\Roohan_GitHub_Launch_Kit\build\tc\soc\tb\axi_lite_if.sv C:\R_MIGRATION_BACKUP\Roohan_GitHub_Launch_Kit\Roohan_GitHub_Launch_Kit\build\technical-completion-2026-11-07\Roohan-Technical-Completion-Pack\patches\RV32I-AXI4-Lite-SoC\baseline\tb\axi_protocol_checker.sv C:\R_MIGRATION_BACKUP\Roohan_GitHub_Launch_Kit\Roohan_GitHub_Launch_Kit\build\tc\soc\tb\checker_response_order_test.sv 
+-- Compiling interface axi_lite_if
+-- Compiling module axi_protocol_checker
+-- Compiling module checker_response_order_test
+
+Top level modules:
+	checker_response_order_test
+End time: 20:32:26 on Nov 07,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

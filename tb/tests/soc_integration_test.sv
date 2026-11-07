@@ -7,6 +7,7 @@ module soc_integration_test;
   logic [4:0] rd;
   int waits=0;
   logic [31:0] last_pc;
+  string wave_file;
   bit was_waiting=0;
   riscv_soc_top #(.DEBUG(1)) dut(clk,reset_n,pc,ins,fault,retire,we,rd,wb,ma,mw);
   axi_protocol_checker protocol(dut.axi);
@@ -21,7 +22,11 @@ module soc_integration_test;
     end
   end
   initial begin
-    if($test$plusargs("WAVES")) begin $dumpfile("logs/integration.vcd"); $dumpvars(0,soc_integration_test); end
+    if($value$plusargs("WAVE_FILE=%s",wave_file)) begin
+      $dumpfile(wave_file); $dumpvars(0,soc_integration_test);
+    end else if($test$plusargs("WAVES")) begin
+      $dumpfile("logs/integration.vcd"); $dumpvars(0,soc_integration_test);
+    end
     repeat(4) @(negedge clk); reset_n=1;
     wait(pc==24); @(negedge clk);
     assert(dut.core.rf.regs[3]===30 && dut.core.rf.regs[5]===30 && dut.data_sram.mem[0]===30)

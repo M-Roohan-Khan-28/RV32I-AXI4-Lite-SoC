@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "origin": "simulator",
+  "source_filename": "measured.vcd",
+  "source_sha256": "2a083f2e31b10c3b22611cc4fbe8b16c32b7caff76f7f9e5a0489bb241e3c018",
+  "timescale": "1ps",
+  "start_tick": 0,
+  "end_tick": 310000,
+  "source_final_tick": 310000,
+  "signals": [
+    {
+      "name": "checker_response_order_test.clk",
+      "code": "!",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.reset_n",
+      "code": "\"",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.awvalid",
+      "code": "#",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.awready",
+      "code": "$",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.wvalid",
+      "code": "%",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.wready",
+      "code": "&",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.bvalid",
+      "code": "'",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.bready",
+      "code": "(",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.arvalid",
+      "code": ")",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.arready",
+      "code": "*",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.rvalid",
+      "code": "+",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "checker_response_order_test.bus.rready",
+      "code": ",",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    }
+  ],
+  "same_tick_collapses": 0,
+  "functional_result": "NOT_ASSESSED_BY_RENDERER"
+}
