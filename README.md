@@ -131,6 +131,13 @@ The reference model checks each retired instruction's PC, register write enable,
 
 `DEBUG=1` prints cycle, PC, instruction, source operands, destination, ALU, writeback, memory request, master state, AXI handshakes/responses and SRAM activity. `+WAVES` on integration/OOP tests emits VCD under `logs/`. The integration test always enables the readable trace.
 
+The independently qualified [AXI4-Lite response-order checker](docs/RESPONSE_ORDER_QUALIFICATION.md)
+now detects early B/R under backpressure and same-edge dependency violations.
+Its eight old-checker negative controls, corrected runs, measured VCD and
+24-run regression evidence are reported separately. `run_regression.ps1` now
+writes fresh output outside the historical `logs/` directory by default; pass
+`-OutputDir <new-directory>` for a stable artifact path.
+
 ## Limitations and Version 2 candidates
 
 No pipeline, interconnect, peripherals, MMU, cache, DMA, OS support or interrupts are included. SRAM is inferred synchronous RTL storage, not a transistor-level macro; synthesis, FPGA timing closure and hardware implementation have not been run. Instruction memory initialization/inference depends on the target tool. There is one CPU memory request in flight; the slave can buffer a read separately from a write but deliberately provides modest throughput. There is no hardware timeout if an external response never arrives.

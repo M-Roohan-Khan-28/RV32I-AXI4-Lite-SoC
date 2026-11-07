@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "origin": "simulator",
+  "source_filename": "integration.vcd",
+  "source_sha256": "f0cfc9dc3e141f0ae4122c0773396a9ed95c9c79e0a72f14237a1264096acfb5",
+  "timescale": "1ps",
+  "start_tick": 0,
+  "end_tick": 190000,
+  "source_final_tick": 190000,
+  "signals": [
+    {
+      "name": "soc_integration_test.clk",
+      "code": "!",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "soc_integration_test.reset_n",
+      "code": "\"",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "soc_integration_test.pc",
+      "code": "#",
+      "width": 32,
+      "kind": "reg",
+      "bit_range": "[31:0]"
+    },
+    {
+      "name": "soc_integration_test.dut.req_valid",
+      "code": "B",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "soc_integration_test.dut.response_valid",
+      "code": "E",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "soc_integration_test.retire",
+      "code": "(",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "soc_integration_test.we",
+      "code": ")",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "soc_integration_test.mw",
+      "code": "*",
+      "width": 1,
+      "kind": "reg",
+      "bit_range": ""
+    },
+    {
+      "name": "soc_integration_test.waits",
+      "code": ",",
+      "width": 32,
+      "kind": "integer",
+      "bit_range": ""
+    }
+  ],
+  "same_tick_collapses": 117,
+  "functional_result": "NOT_ASSESSED_BY_RENDERER"
+}
