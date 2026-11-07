@@ -132,7 +132,11 @@ The reference model checks each retired instruction's PC, register write enable,
 `DEBUG=1` prints cycle, PC, instruction, source operands, destination, ALU, writeback, memory request, master state, AXI handshakes/responses and SRAM activity. `+WAVES` on integration/OOP tests emits VCD under `logs/`. The integration test always enables the readable trace.
 
 The independently qualified [AXI4-Lite response-order checker](docs/RESPONSE_ORDER_QUALIFICATION.md)
-now detects early B/R under backpressure and same-edge dependency violations.
+is now a required substep of `scripts/run_regression.ps1`: one legal case and
+eight individually expected negative detections must pass after the 24
+functional runs. The wrapper records the two counts separately and exits
+nonzero for a missing tool, timeout, missing result, or unexpected diagnostic.
+The checker detects early B/R under backpressure and same-edge dependency violations.
 Its eight old-checker negative controls, corrected runs, measured VCD and
 24-run regression evidence are reported separately. `run_regression.ps1` now
 writes fresh output outside the historical `logs/` directory by default; pass

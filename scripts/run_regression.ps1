@@ -17,6 +17,7 @@ $record=[ordered]@{
   repository='RV32I-AXI4-Lite-SoC'; source_revision=$revision; source_dirty=$dirty
   simulator_version=$version; output_dir=$out; full_sv=[bool]$FullSV
   timeout_seconds_per_simulation=120; expected_runs=24; passed_runs=0
+  checker_qualification=[ordered]@{status='NOT RUN';positive=0;expected_negative=0;exit_code=$null}
   status='FAIL'; runs=@(); error=$null; started_utc=(Get-Date).ToUniversalTime().ToString('o')
 }
 "Regression started $(Get-Date -Format o); FULL_SV=$FullSV" | Set-Content -Encoding utf8 $summary
@@ -64,6 +65,28 @@ foreach($seed in @(1,17,2026)) {
 }
 $record.passed_runs=$count
 if($count -ne 24) { throw "Expected 24 runs, observed $count" }
+$python=Get-Command py.exe -ErrorAction SilentlyContinue
+if(-not $python) { throw 'Python 3 launcher missing for required checker qualification' }
+$qualificationOut=Join-Path $out 'checker-response-order'
+& $python.Source -3 (Join-Path $PSScriptRoot 'run_checker_response_order.py') --repo-root $projectRoot --output-dir $qualificationOut |
+  Tee-Object -FilePath $console -Append
+$qualificationExit=$LASTEXITCODE
+$qualificationPath=Join-Path $qualificationOut 'RESULTS.json'
+if($qualificationExit -ne 0 -or -not (Test-Path -LiteralPath $qualificationPath)) {
+  throw "Checker qualification failed or results missing (exit $qualificationExit)"
+}
+$qualification=Get-Content -LiteralPath $qualificationPath -Raw | ConvertFrom-Json
+$cases=@($qualification.cases)
+$positive=@($cases | Where-Object { $_.case -eq 0 -and $_.result -eq 'LEGAL_TRAFFIC_ACCEPTED' }).Count
+$negative=@($cases | Where-Object { $_.case -ge 1 -and $_.case -le 8 -and $_.result -eq 'EXPECTED_VIOLATION_DETECTED' }).Count
+if($qualification.overall -ne 'QUALIFICATION_PASS' -or $qualification.baseline_probe -or
+   $cases.Count -ne 9 -or (@($cases.case | Select-Object -Unique)).Count -ne 9 -or
+   $positive -ne 1 -or $negative -ne 8) {
+  throw 'Checker qualification did not report one legal and eight distinct expected-negative results'
+}
+$record.checker_qualification=[ordered]@{status='PASS';positive=$positive;expected_negative=$negative;exit_code=$qualificationExit}
+"CHECKER_QUALIFICATION_PASS positive=$positive expected_negative=$negative" | Add-Content -Encoding utf8 $summary
+Write-Output "CHECKER_QUALIFICATION_PASS positive=$positive expected_negative=$negative"
 $result="PASS REGRESSION $count/$count runs; finished $(Get-Date -Format o)"
 $result | Add-Content -Encoding utf8 $summary
 Write-Output $result
