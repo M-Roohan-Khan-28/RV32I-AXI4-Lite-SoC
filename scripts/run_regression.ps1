@@ -26,7 +26,7 @@ $count=0
 try {
 foreach($top in $tops) {
   $simArgs=@()
-  if($top -eq 'soc_integration_test') { $simArgs=@('+WAVES') }
+  if($top -eq 'soc_integration_test') { $simArgs=@("+WAVE_FILE=$(Join-Path $out 'integration.vcd')") }
   if($top -eq 'tb_top') { $simArgs=@('-sv_seed','1') }
   & $runner -Top $top -Sources '-f','scripts/filelist.f' -FullSV:$FullSV -SkipCompile:($count -gt 0) -SimArgs $simArgs -OutputDir $out |
     Tee-Object -FilePath $console -Append

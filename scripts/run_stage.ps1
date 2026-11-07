@@ -22,7 +22,8 @@ try {
   $psi=New-Object Diagnostics.ProcessStartInfo
   $psi.FileName="$bin/vsim.exe"
   $psi.WorkingDirectory=$projectRoot
-  $psi.Arguments="-c -onfinish exit $Top $($SimArgs -join ' ') -do scripts/batch.do"
+  $safeSimArgs=@($SimArgs | ForEach-Object { if($_ -match '\s') { '"' + $_.Replace('"','\"') + '"' } else { $_ } })
+  $psi.Arguments="-c -onfinish exit $Top $($safeSimArgs -join ' ') -do scripts/batch.do"
   $psi.UseShellExecute=$false
   $psi.RedirectStandardOutput=$true
   $psi.RedirectStandardError=$true
